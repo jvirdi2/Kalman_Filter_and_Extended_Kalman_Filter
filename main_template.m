@@ -1,14 +1,6 @@
 
 
-%% 6 DOF EKF GPS-INS Fusion
-% This code was developed by Girish Chowdhary
-% To learn more about the filter, please read:
-% 1. A Compact Guidance, Navigation, and Control System for Unmanned Aerial Vehicles (2006)
-% by Henrik B. Christophersen , R. Wayne Pickell , James C. Neidhoefer , Adrian A. Koller , K. Kannan , Eric N. Johnson
-% 2. (More advanced) GPS-Denied Indoor and Outdoor Monocular Vision Aided
-% Navigation and Control of Unmanned Aircraft, Chowdhary, Magree, Johnson,
-% Shein, Wu
-% 3. (very detailed) (late) Nimrod Rooz's thesis proposal
+% EKF GPS-INS Fusion for a 6 DOF drone
 
 
 
@@ -18,7 +10,8 @@ close all
 % load a check file with the data
 load check
 % This loads a matrix called A (arbitrary name, nothing to do with the real
-% A) which contains the data that you need
+% A) which contains the data that you need. This data has sensor data and some
+% gps data to correct our estimators
 
 % initial position in x y and z
 x=[0 0 0];
@@ -46,7 +39,7 @@ L_bi = [cos(theta)*cos(psi) cos(theta)*sin(psi) -sin(theta); ...
     cos(phi)*sin(theta)*cos(psi)+sin(phi)*sin(psi)  cos(phi)*sin(theta)*sin(psi)-sin(phi)*cos(psi) cos(phi)*cos(theta)];
 
 
-Rt2b=L_bi';%%%%%%%%%%%% Did tranpose on my own.
+Rt2b=L_bi';
 
 [U,S,V]=svd(Rt2b);
 R = U*V';
@@ -55,7 +48,7 @@ if 1+R(1,1)+R(2,2)+R(3,3) > 0
     b(2,1)    = ((R(3,2)-R(2,3))/4)/b(1);
     b(3,1)    = (R(1,3)-R(3,1))/4/b(1);
     b(4,1)    = (R(2,1)-R(1,2))/4/b(1);
-    b       = b/norm(b);    % renormalize
+    b       = b/norm(b);    
 else
     R
     error('R diagonal too negative.')
