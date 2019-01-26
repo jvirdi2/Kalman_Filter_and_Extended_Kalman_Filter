@@ -1,4 +1,6 @@
 function [phi, theta, psi] = quat2euler(q)
+% Takes quaternion input and outputs euler angles
+% The sign convention is the aero space frame
 [n, junk] = size(q);
 m=eye(3);
 phi=zeros(n,1);
