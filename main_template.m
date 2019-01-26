@@ -80,7 +80,7 @@ tf=size(A,2);
 %      [x y z vx vy vz     quat          gyro-bias accl-bias]
 xhat = [0 0 0 0 0 0 b(1) b(2) b(3) b(4) bp bq br bfx bfy bfz]';
 
-% noise params process noise (my gift to you :))
+% noise params process noise 
 Q = diag([.1 .1 .1 .1 .1 .1 .8 .8 .8 .8 .0001 .0001 .0001 .0001 .0001 .0001]);
 %Q=100*Q;
 % Really makes it converge very well Q=100*Q;
