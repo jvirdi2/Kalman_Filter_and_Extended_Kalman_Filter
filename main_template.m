@@ -26,7 +26,7 @@ bfz = 0;
 
 
 % IMU location specifier
-r_imu=[-.5/12 -3/12 1/12]'*0; %% I have set this to zero, for Bonus, you can include the effect of this
+r_imu=[-.5/12 -3/12 1/12]'*0; % Currently set to 0. Offset effects are not currently considered
 r_GPS=[1.5, 0 ,0 ]; % This is the location of the GPS wrt CG, this is very important
 %rotation matrix ------------------------------------------------------
 phi= x(1);
