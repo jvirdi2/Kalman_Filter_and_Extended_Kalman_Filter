@@ -228,7 +228,7 @@ for k = 1:tf
     
     % Assemble H
     H=[[I zeros(3,3) H_delp_delq zeros(3,6)];[zeros(3,3) I H_delv_delq zeros(3,6)]];
-    rank(obsv(phi_matrix,H))
+    %rank(obsv(phi_matrix,H))
     %Compute Kalman gain
     S=H*P*H'+R;
     K=P*H'*inv(S);
