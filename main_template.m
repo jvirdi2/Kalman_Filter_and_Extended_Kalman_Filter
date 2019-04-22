@@ -9,6 +9,7 @@ close all
 
 % load a check file with the data
 load check
+% Based on the code provided for "Intro to Field Robotics" class at UIUC, Dr Girish Chowdhary.
 % This loads a matrix called A (arbitrary name, nothing to do with the real
 % A) which contains the data that you need. This data has sensor data and some
 % gps data to correct our estimators
